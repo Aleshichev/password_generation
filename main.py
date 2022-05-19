@@ -26,7 +26,7 @@ def generate_password():
     # for char in password_lst:
     #     password += char
     entry_password.insert(0, password)
-    pyperclip.copy(password)
+    pyperclip.copy(password)      # автоматически сохраняет в буфер обмена пароль
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 def save():
