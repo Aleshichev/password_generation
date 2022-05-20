@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
 import pyperclip
+import json
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
@@ -34,6 +35,12 @@ def save():
     website = entry_web.get()
     email = entry_email.get()
     password = entry_password.get()
+    new_data = {
+        website: {
+            "email": email,
+            "password": password,
+        }
+    }
 
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title="Ошибка", message="Введите данные")
@@ -41,12 +48,41 @@ def save():
         is_ok = messagebox.askokcancel(title=website,message=f"Детали ввода: \nEmail: {email}"
                                f"\nPassword: {password} \nСохранять?")
         if is_ok:
-            with open("data.txt", "a") as data_file:
-                data_file.write(f"{website} | {email} | {password}\n")
+            try:
+                with open("data.json", "r") as data_file:
+                    # data_file.write(f"{website} | {email} | {password}\n")
+                    # Reading
+                    data = json.load(data_file)
+            except FileNotFoundError:
+                with open("data.json", "w") as data_file:
+                    json.dump(new_data, data_file, indent=4)
+            else:
+                    # Updating
+                data.update(new_data)
+
+                with open("data.json", "w") as data_file:
+                    # Saving
+                    json.dump(data, data_file, indent=4)
+
+            finally:
                 entry_web.delete(0, END)
                 entry_password.delete(0, END)
 
-
+# ---------------------------- Find Password ------------------------------- #
+def find_password():
+    website = entry_web.get()
+    try:
+        with open("data.json") as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Ошибка!!!", message="Нет данных!")
+    else:
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"Email: {email}\nPassword: {password}")
+        else:
+            messagebox.showinfo(title="Ошибка!!!", message=f"Нет данных {website}")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -70,15 +106,18 @@ label_email.grid(column=0, row=2)
 label_password = Label(text="Password:")
 label_password.grid(column=0, row=3)
 
-#calls action() when pressed
+#buttons
+search_button = Button(text="Search", width=14, command=find_password)
+search_button.grid(row=1, column=2)
+
 button_password = Button(text="Generate Password ", command=generate_password)
 button_password.grid(column=2, row=3)
 
 button_add = Button(text="Add", width=44, command=save)
 button_add.grid(column=1, row=4, columnspan=2)
 
-entry_web = Entry(width=52)
-entry_web.grid(column=1, row=1, columnspan=2)
+entry_web = Entry(width=33)
+entry_web.grid(column=1, row=1)
 entry_web.focus()
 
 entry_email = Entry(width=52)
