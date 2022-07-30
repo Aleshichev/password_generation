@@ -88,6 +88,7 @@ def find_password():
 
 
 window = Tk()
+window.resizable(False, False)
 window.title("Password Manager")
 window.config(padx=20, pady=20)
 
