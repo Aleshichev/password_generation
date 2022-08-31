@@ -9,6 +9,7 @@
 -	pyperclip, 
 -	messagebox
 ## Графическое отображение 
+![logo](https://github.com/Aleshichev/password_generation/blob/main/photo/1.png)
 ## Структура проекта
 Для удобства управления данными создано 3 константы данных, 3 функции, Ui структура и логика отображения программы.
 ## Процесс 
@@ -22,7 +23,7 @@
   - Запрос о подтверждении сохранения данных.
   - Сообщение об ошибке: если пользователь ввёл не всю информацию, если данного сайта нет.
   
-![logo](https://github.com/Aleshichev/password_generation/blob/main/logo.png)
+![logo](https://github.com/Aleshichev/password_generation/blob/main/photo/4.png)![logo](https://github.com/Aleshichev/password_generation/blob/main/photo/3.png)
 
 
 
