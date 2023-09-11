@@ -1,27 +1,27 @@
-# Генератор паролей  (Tkinter – графический проект)
-Программа умеет сохранять, генерировать и искать пароли.
-Пользователь может ввести сайт, почту и свой пароль или сгенерировать пароль автоматически.
-Все данные сохраняються в json файл. Также пользователь может ввести имя сайта и найти нужную информацию о сохранённом ранее пароле.
-## Используемые ресурсы,  модули и библиотеки:  
--	tkinter, 
--	random, 
--	json,
--	pyperclip, 
--	messagebox
-## Графическое отображение 
+# Password Generator (Tkinter - graphical project)
+The programme is able to save, generate and search for passwords.
+User can enter site, email and password or generate password automatically.
+All data is saved in a json file. The user can also enter the site name and search for a previously saved password.
+## Resources, modules and libraries used:  
+- tkinter, 
+- random, 
+- json,
+- pyperclip, 
+- messagebox
+## Graphical display
 ![logo](https://github.com/Aleshichev/password_generation/blob/main/photo/1.png)
-## Структура проекта
-Для удобства управления данными создано 3 константы данных, 3 функции, Ui структура и логика отображения программы.
-## Процесс 
-1.	Пользователю открывается окно, в котором отображено 3 строки для ввода информации **Website**, **Email**, **Password** и три функциональные кнопки **Search**, **Generate Password**, **Add**.
-2.	Если пользователь заполняет все строки и нажимает кнопку **Add** - то программа обращаеться к функции **def  save()**, которая сохраняет полученную информацию в **json** файл (если файла нет – создаёт файл, если файл есть – обновляет его).
-3.	Если пользователь не может придумать пароль, он может нажать на кнопку **Generate Password**. Программа обратиться к функции **def  generate_password()**  и отобразит рандомный сложный пароль,  состоящий из букв, цифр и символов.
-4.	Также программа помогает легко найти из базы сохранённых паролей необходимый. Нужно указать имя сайта и нажать **Search**. Программа выполнит функцию **def find_password()** и в всплывающем окне появятся нужные данные.
-## Функциональные особенности
-+ При генерации или поиске пароля программа (для удобства) автоматически сохраняет пароль в буфер обмена, который сразу можно вводить в нужное поле регистрации нажав Ctrl+V.
-+ Всплывающие окна: 
-  - Запрос о подтверждении сохранения данных.
-  - Сообщение об ошибке: если пользователь ввёл не всю информацию, если данного сайта нет.
+## Project structure
+3 data constants, 3 functions, Ui structure and programme display logic are created for easy data management.
+## Process 
+1.	A window is opened to the user, which displays 3 lines for entering information **Website**, **Email**, **Password** and three function buttons **Search**, **Generate Password**, **Add**.
+2.	If the user fills in all lines and presses **Add** button, the programme calls **def save()** function, which saves the received information into **json** file (if there is no file - creates a file, if there is a file - updates it).
+3. If the user cannot think of a password, he can click on the **Generate Password** button. The programme will call **def generate_password()** and display a random complex password consisting of letters, numbers and symbols.
+4 The programme also helps to easily find the necessary password from the database of saved passwords. You need to specify the site name and press **Search**. The programme will execute the **def find_password()** function and the required data will appear in the pop-up window.
+## Functional features
++ When generating or searching for a password, the programme (for convenience) automatically saves the password to the clipboard, which can be immediately entered into the required registration field by pressing Ctrl+V.
++ Pop-up windows: 
+  - Data saving confirmation request.
+  - Error message: if the user has not entered all information, if this site does not exist.
   
 ![logo](https://github.com/Aleshichev/password_generation/blob/main/photo/4.png)![logo](https://github.com/Aleshichev/password_generation/blob/main/photo/3.png)
 
